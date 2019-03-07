@@ -12,15 +12,14 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UIWebViewDelegate {
 
-    @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet weak var qiitaTitleLabel: UILabel!
     @IBOutlet weak var webView: UIWebView!
     
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
-    var url = NSURL()
+    var pageURL = NSURL()
     
     var pageTitles: [String] = []
     var pageURLs: [String] = []
@@ -57,44 +56,50 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     private func confirmBeforeShowingWebView() {
         
+        let alertTitle = "【重要】"
+        let alertMessage = "Websiteにアクセスします。\nよろしいですか？"
+        let titleForDefaultAction = "OK"
+        let titleForCancelAction = "キャンセル"
+        
         //アラートの本体（UIAlertController）のインスタンスを生成
-        let alert = UIAlertController(title: "【重要】", message: "Websiteにアクセスします。\nよろしいですか？", preferredStyle: .alert)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         
         //アラートに付属させる選択肢（UIAlertAction）のインスタンスを生成
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {
-            // ボタンが押された時の処理を書く（クロージャ実装）
+        let defaultAction = UIAlertAction(title: titleForDefaultAction, style: .default, handler: {
+            // OKボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             self.toWebPage()
         })
         
         //アラートに付属させる選択肢（UIAlertAction）のインスタンスを生成
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
-            // ボタンが押された時の処理を書く（クロージャ実装）
+        let cancelAction: UIAlertAction = UIAlertAction(title: titleForCancelAction, style: .cancel, handler:{
+            // キャンセル・ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
             print(action)
-            print("Cancel")
         })
         
         //アラート本体に対して、付属させる選択肢を加える
         alert.addAction(defaultAction)
         alert.addAction(cancelAction)
+        
         //アラートを表示する
         present(alert, animated: true, completion: nil)
     }
     
     private func toWebPage() {
     
+        //APIで取得済みのURLのうち最新の記事にアクセスし、Webビューに表示する
         if let urlToUse = pageURLs.first {
-        self.url = NSURL(string: urlToUse)!
+            self.pageURL = NSURL(string: urlToUse)!
         } else {
-        print("Failed to get page URLs...")
+            print("Failed to get page URLs...")
         }
         
-        webView.isHidden = false
-        
-        let request = NSURLRequest(url: url as URL)
+        let request = NSURLRequest(url: pageURL as URL)
         webView.loadRequest(request as URLRequest)
         
+        webView.isHidden = false
+
         goButton.isHidden = true
         reloadButton.isHidden = true
         backButton.isHidden = false
@@ -106,6 +111,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         pageTitles = []
         pageURLs = []
         
+        //QiitaのAPIにアクセス。最新の20記事を取得し、最も新しい記事のタイトルを表示する
         Alamofire.request(qiitaAPI_Url).responseJSON{ response in
             let json = JSON(response.result.value ?? 0)
             json.forEach{(arg) in
@@ -113,7 +119,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
                 defer {
                     
                     if let titleToShow = self.pageTitles.first {
-                        self.label.text = titleToShow
+                        self.qiitaTitleLabel.text = titleToShow
                     } else {
                         print("Failed to get page titles...")
                     }

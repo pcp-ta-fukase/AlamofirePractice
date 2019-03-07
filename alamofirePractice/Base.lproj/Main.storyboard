@@ -89,7 +89,7 @@
                     <connections>
                         <outlet property="backButton" destination="xnm-nn-AvT" id="CXe-dK-Hc2"/>
                         <outlet property="goButton" destination="PRs-mg-cwK" id="ga0-4i-0zT"/>
-                        <outlet property="label" destination="fkS-ap-HfN" id="Ixx-nj-HtO"/>
+                        <outlet property="qiitaTitleLabel" destination="fkS-ap-HfN" id="9aB-fI-w0G"/>
                         <outlet property="reloadButton" destination="sFB-7c-PhY" id="5fz-ed-Aio"/>
                         <outlet property="webView" destination="ypH-rb-HVQ" id="hzH-sy-rzk"/>
                     </connections>
