@@ -55,7 +55,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         backButton.isHidden = true
     }
     
-    func confirmBeforeShowingWebView() {
+    private func confirmBeforeShowingWebView() {
         
         //アラートの本体（UIAlertController）のインスタンスを生成
         let alert = UIAlertController(title: "【重要】", message: "Websiteにアクセスします。\nよろしいですか？", preferredStyle: .alert)
@@ -102,6 +102,10 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     private func getLatestQiitaInfo() {
         
+        //一覧情報を更新するため、配列の中身を空にする
+        pageTitles = []
+        pageURLs = []
+        
         Alamofire.request(qiitaAPI_Url).responseJSON{ response in
             let json = JSON(response.result.value ?? 0)
             json.forEach{(arg) in
@@ -113,6 +117,8 @@ class ViewController: UIViewController, UIWebViewDelegate {
                     } else {
                         print("Failed to get page titles...")
                     }
+                    
+                    print(self.pageTitles.count)
                 }
                 
                 let (_, data) = arg
