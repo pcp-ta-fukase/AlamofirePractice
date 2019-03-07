@@ -17,12 +17,14 @@ class ViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     
     @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
     var url = NSURL()
     
     var pageTitles: [String] = []
     var pageURLs: [String] = []
+    let qiitaAPI_Url = "https://qiita.com/api/v2/items"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,37 +33,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         webView.delegate = self
         webView.isHidden = true
         
-        let qiitaAPI_Url = "https://qiita.com/api/v2/items"
-        
-        Alamofire.request(qiitaAPI_Url).responseJSON{ response in
-            let json = JSON(response.result.value ?? 0)
-            json.forEach{(arg) in
-                
-                defer {
-                    
-                    if let titleToShow = self.pageTitles.first {
-                        self.label.text = titleToShow
-                    } else {
-                        print("Failed to get page titles...")
-                    }
-                }
-                
-                let (_, data) = arg
-                
-                let v = data["title"].string
-                let w = data["url"].string
-                
-                if let unwrappedV = v {
-                
-                    self.pageTitles.append(unwrappedV)
-                }
-                
-                if let unwrappedW = w {
-                    
-                    self.pageURLs.append(unwrappedW)
-                }
-            }
-        }
+        getLatestQiitaInfo()
     }
     
     @IBAction func goToPage(_ sender: Any) {
@@ -69,11 +41,17 @@ class ViewController: UIViewController, UIWebViewDelegate {
         confirmBeforeShowingWebView()
     }
     
+    @IBAction func onButtonReload(_ sender: Any) {
+        
+        getLatestQiitaInfo()
+    }
+    
     @IBAction func backToFirstPage() {
         
         webView.isHidden = true
         
         goButton.isHidden = false
+        reloadButton.isHidden = false
         backButton.isHidden = true
     }
     
@@ -118,6 +96,40 @@ class ViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(request as URLRequest)
         
         goButton.isHidden = true
+        reloadButton.isHidden = true
         backButton.isHidden = false
+    }
+    
+    private func getLatestQiitaInfo() {
+        
+        Alamofire.request(qiitaAPI_Url).responseJSON{ response in
+            let json = JSON(response.result.value ?? 0)
+            json.forEach{(arg) in
+                
+                defer {
+                    
+                    if let titleToShow = self.pageTitles.first {
+                        self.label.text = titleToShow
+                    } else {
+                        print("Failed to get page titles...")
+                    }
+                }
+                
+                let (_, data) = arg
+                
+                let v = data["title"].string
+                let w = data["url"].string
+                
+                if let unwrappedV = v {
+                    
+                    self.pageTitles.append(unwrappedV)
+                }
+                
+                if let unwrappedW = w {
+                    
+                    self.pageURLs.append(unwrappedW)
+                }
+            }
+        }
     }
 }

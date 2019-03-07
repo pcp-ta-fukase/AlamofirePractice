@@ -43,17 +43,24 @@
                                     <action selector="goToPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1o-Qb-a20"/>
                                 </connections>
                             </button>
-                            <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-rb-HVQ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="589"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-nn-AvT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFB-7c-PhY">
+                                <rect key="frame" x="172" y="617" width="31" height="30"/>
+                                <state key="normal" title="更新"/>
+                                <connections>
+                                    <action selector="onButtonReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BCU-ds-cIM"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-nn-AvT">
                                 <rect key="frame" x="211" y="617" width="153" height="30"/>
                                 <state key="normal" title="戻る"/>
                                 <connections>
                                     <action selector="backToFirstPage" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhQ-W0-uNM"/>
                                 </connections>
                             </button>
+                            <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-rb-HVQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="589"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.99923740959296459" green="1" blue="0.79034789135280392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -64,9 +71,11 @@
                             <constraint firstItem="PRs-mg-cwK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-100" id="Lcx-pa-LLb"/>
                             <constraint firstItem="ypH-rb-HVQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-58" id="LzA-de-Q5g"/>
                             <constraint firstItem="ypH-rb-HVQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MIx-Mx-aKY"/>
+                            <constraint firstItem="sFB-7c-PhY" firstAttribute="top" secondItem="ypH-rb-HVQ" secondAttribute="bottom" constant="8" id="OGN-CG-Iit"/>
                             <constraint firstItem="PRs-mg-cwK" firstAttribute="baseline" secondItem="xnm-nn-AvT" secondAttribute="baseline" id="P40-Qa-Gj3"/>
                             <constraint firstItem="xnm-nn-AvT" firstAttribute="leading" secondItem="PRs-mg-cwK" secondAttribute="trailing" constant="69" id="RtU-lv-Exw"/>
                             <constraint firstItem="RrJ-LL-0Ow" firstAttribute="leading" secondItem="ypH-rb-HVQ" secondAttribute="leading" id="T91-Qv-lRX"/>
+                            <constraint firstItem="xnm-nn-AvT" firstAttribute="leading" secondItem="sFB-7c-PhY" secondAttribute="trailing" constant="8" symbolic="YES" id="UXD-mR-azw"/>
                             <constraint firstItem="fkS-ap-HfN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="323" id="XwZ-Gu-FPM"/>
                             <constraint firstItem="fkS-ap-HfN" firstAttribute="top" secondItem="RrJ-LL-0Ow" secondAttribute="bottom" constant="90" id="hUa-3M-WUg"/>
                             <constraint firstItem="xnm-nn-AvT" firstAttribute="top" secondItem="ypH-rb-HVQ" secondAttribute="bottom" constant="8" id="jmD-TD-sC7"/>
@@ -80,6 +89,7 @@
                         <outlet property="backButton" destination="xnm-nn-AvT" id="CXe-dK-Hc2"/>
                         <outlet property="goButton" destination="PRs-mg-cwK" id="ga0-4i-0zT"/>
                         <outlet property="label" destination="fkS-ap-HfN" id="Ixx-nj-HtO"/>
+                        <outlet property="reloadButton" destination="sFB-7c-PhY" id="5fz-ed-Aio"/>
                         <outlet property="webView" destination="ypH-rb-HVQ" id="hzH-sy-rzk"/>
                     </connections>
                 </viewController>
