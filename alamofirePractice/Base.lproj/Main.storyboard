@@ -40,14 +40,14 @@
                                 </constraints>
                                 <state key="normal" title="見に行く！"/>
                                 <connections>
-                                    <action selector="goToPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f1o-Qb-a20"/>
+                                    <action selector="onButtonGo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h8g-8G-RPj"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-nn-AvT">
                                 <rect key="frame" x="265" y="617" width="90" height="30"/>
                                 <state key="normal" title="戻る"/>
                                 <connections>
-                                    <action selector="backToFirstPage" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhQ-W0-uNM"/>
+                                    <action selector="onButtonBack" destination="BYZ-38-t0r" eventType="touchUpInside" id="CmP-wY-WQr"/>
                                 </connections>
                             </button>
                             <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-rb-HVQ">
@@ -58,7 +58,7 @@
                                 <rect key="frame" x="145" y="617" width="85" height="30"/>
                                 <state key="normal" title="更新"/>
                                 <connections>
-                                    <action selector="onButtonReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BCU-ds-cIM"/>
+                                    <action selector="onButtonReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwC-8j-qZT"/>
                                 </connections>
                             </button>
                         </subviews>

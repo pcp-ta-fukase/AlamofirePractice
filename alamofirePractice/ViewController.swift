@@ -36,7 +36,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         getLatestQiitaInfo()
     }
     
-    @IBAction func goToPage(_ sender: Any) {
+    @IBAction func onButtonGo(_ sender: Any) {
         
         confirmBeforeShowingWebView()
     }
@@ -46,7 +46,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         getLatestQiitaInfo()
     }
     
-    @IBAction func backToFirstPage() {
+    @IBAction func onButtonBack() {
         
         webView.isHidden = true
         
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {
             // ボタンが押された時の処理を書く（クロージャ実装）
             (action: UIAlertAction!) -> Void in
-            self.go()
+            self.toWebPage()
         })
         
         //アラートに付属させる選択肢（UIAlertAction）のインスタンスを生成
@@ -82,7 +82,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    private func go() {
+    private func toWebPage() {
     
         if let urlToUse = pageURLs.first {
         self.url = NSURL(string: urlToUse)!
