@@ -66,10 +66,50 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     @IBAction func goToPage(_ sender: Any) {
         
+        confirmBeforeShowingWebView()
+    }
+    
+    @IBAction func backToFirstPage() {
+        
+        webView.isHidden = true
+        
+        goButton.isHidden = false
+        backButton.isHidden = true
+    }
+    
+    func confirmBeforeShowingWebView() {
+        
+        //アラートの本体（UIAlertController）のインスタンスを生成
+        let alert = UIAlertController(title: "【重要】", message: "Websiteにアクセスします。\nよろしいですか？", preferredStyle: .alert)
+        
+        //アラートに付属させる選択肢（UIAlertAction）のインスタンスを生成
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            self.go()
+        })
+        
+        //アラートに付属させる選択肢（UIAlertAction）のインスタンスを生成
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print(action)
+            print("Cancel")
+        })
+        
+        //アラート本体に対して、付属させる選択肢を加える
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+        //アラートを表示する
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func go() {
+    
         if let urlToUse = pageURLs.first {
-            self.url = NSURL(string: urlToUse)!
+        self.url = NSURL(string: urlToUse)!
         } else {
-            print("Failed to get page URLs...")
+        print("Failed to get page URLs...")
         }
         
         webView.isHidden = false
@@ -79,13 +119,5 @@ class ViewController: UIViewController, UIWebViewDelegate {
         
         goButton.isHidden = true
         backButton.isHidden = false
-    }
-    
-    @IBAction func backToFirstPage() {
-        
-        webView.isHidden = true
-        
-        goButton.isHidden = false
-        backButton.isHidden = true
     }
 }
