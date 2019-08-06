@@ -10,22 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller ObjectiveC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="alamofirePractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewControllerObjectiveC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↓Qiitaの最新記事はこちら！↓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RrJ-LL-0Ow">
-                                <rect key="frame" x="0.0" y="212" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="170" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkS-ap-HfN">
-                                <rect key="frame" x="20" y="323" width="335" height="104"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkS-ap-HfN">
+                                <rect key="frame" x="20" y="241" width="335" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="104" id="XGV-h7-yOQ"/>
                                 </constraints>
@@ -33,65 +33,41 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRs-mg-cwK">
-                                <rect key="frame" x="33" y="617" width="109" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptQ-gS-sB1">
+                                <rect key="frame" x="50" y="567" width="275" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="109" id="a2Q-cj-pqB"/>
+                                    <constraint firstAttribute="height" constant="50" id="USH-hs-WYw"/>
                                 </constraints>
-                                <state key="normal" title="見に行く！"/>
+                                <state key="normal" title="Open Safari">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonGo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h8g-8G-RPj"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-nn-AvT">
-                                <rect key="frame" x="265" y="617" width="90" height="30"/>
-                                <state key="normal" title="戻る"/>
-                                <connections>
-                                    <action selector="onButtonBack" destination="BYZ-38-t0r" eventType="touchUpInside" id="CmP-wY-WQr"/>
-                                </connections>
-                            </button>
-                            <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-rb-HVQ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="589"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFB-7c-PhY">
-                                <rect key="frame" x="145" y="617" width="85" height="30"/>
-                                <state key="normal" title="更新"/>
-                                <connections>
-                                    <action selector="onButtonReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mwC-8j-qZT"/>
+                                    <action selector="onTapSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pkb-0o-JvZ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99923740959296459" green="1" blue="0.79034789135280392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="ypH-rb-HVQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6K5-Ag-hB2"/>
-                            <constraint firstItem="RrJ-LL-0Ow" firstAttribute="trailing" secondItem="ypH-rb-HVQ" secondAttribute="trailing" id="APu-JI-LsV"/>
+                            <constraint firstItem="RrJ-LL-0Ow" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2Kv-gV-L3k"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ptQ-gS-sB1" secondAttribute="bottom" constant="50" id="B0h-wp-43i"/>
                             <constraint firstItem="fkS-ap-HfN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Df4-D5-PZG"/>
-                            <constraint firstItem="sFB-7c-PhY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EdT-Is-ufx"/>
-                            <constraint firstItem="PRs-mg-cwK" firstAttribute="top" secondItem="ypH-rb-HVQ" secondAttribute="bottom" constant="8" id="HVh-PN-nD2"/>
-                            <constraint firstItem="PRs-mg-cwK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-100" id="Lcx-pa-LLb"/>
-                            <constraint firstItem="ypH-rb-HVQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-58" id="LzA-de-Q5g"/>
-                            <constraint firstItem="ypH-rb-HVQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="MIx-Mx-aKY"/>
-                            <constraint firstItem="sFB-7c-PhY" firstAttribute="top" secondItem="ypH-rb-HVQ" secondAttribute="bottom" constant="8" id="OGN-CG-Iit"/>
-                            <constraint firstItem="PRs-mg-cwK" firstAttribute="baseline" secondItem="xnm-nn-AvT" secondAttribute="baseline" id="P40-Qa-Gj3"/>
-                            <constraint firstItem="xnm-nn-AvT" firstAttribute="leading" secondItem="PRs-mg-cwK" secondAttribute="trailing" constant="123" id="RtU-lv-Exw"/>
-                            <constraint firstItem="RrJ-LL-0Ow" firstAttribute="leading" secondItem="ypH-rb-HVQ" secondAttribute="leading" id="T91-Qv-lRX"/>
-                            <constraint firstItem="xnm-nn-AvT" firstAttribute="leading" secondItem="sFB-7c-PhY" secondAttribute="trailing" constant="35" id="UXD-mR-azw"/>
-                            <constraint firstItem="fkS-ap-HfN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="323" id="XwZ-Gu-FPM"/>
-                            <constraint firstItem="fkS-ap-HfN" firstAttribute="top" secondItem="RrJ-LL-0Ow" secondAttribute="bottom" constant="90" id="hUa-3M-WUg"/>
-                            <constraint firstItem="xnm-nn-AvT" firstAttribute="top" secondItem="ypH-rb-HVQ" secondAttribute="bottom" constant="8" id="jmD-TD-sC7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ptQ-gS-sB1" secondAttribute="trailing" constant="50" id="FDM-el-0Xf"/>
+                            <constraint firstItem="RrJ-LL-0Ow" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="LkQ-Ue-vvy"/>
+                            <constraint firstItem="RrJ-LL-0Ow" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OMn-2C-72j"/>
+                            <constraint firstItem="fkS-ap-HfN" firstAttribute="top" secondItem="RrJ-LL-0Ow" secondAttribute="bottom" constant="50" id="c7M-mv-RXf"/>
+                            <constraint firstItem="ptQ-gS-sB1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="kY4-A0-9pZ"/>
                             <constraint firstAttribute="trailing" secondItem="fkS-ap-HfN" secondAttribute="trailing" constant="20" id="l1y-pU-Xk9"/>
-                            <constraint firstItem="xnm-nn-AvT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="122.5" id="rJu-oy-Gjk"/>
-                            <constraint firstItem="ypH-rb-HVQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vOm-UC-Nha"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="xnm-nn-AvT" id="CXe-dK-Hc2"/>
-                        <outlet property="goButton" destination="PRs-mg-cwK" id="ga0-4i-0zT"/>
-                        <outlet property="qiitaTitleLabel" destination="fkS-ap-HfN" id="9aB-fI-w0G"/>
-                        <outlet property="reloadButton" destination="sFB-7c-PhY" id="5fz-ed-Aio"/>
-                        <outlet property="webView" destination="ypH-rb-HVQ" id="hzH-sy-rzk"/>
+                        <outlet property="qiitaTitleLabel" destination="fkS-ap-HfN" id="kI7-mk-oux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
